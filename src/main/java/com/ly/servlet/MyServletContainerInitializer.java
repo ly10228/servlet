@@ -11,19 +11,19 @@ import java.util.Set;
 /**
  * @author luoyong001
  * @Description: MyServletContainerInitializer
- * ÈİÆ÷Æô¶¯µÄÊ±ºò»á½«@HandlesTypesÖ¸¶¨µÄÕâ¸öÀàĞÍÏÂÃæµÄ×ÓÀà£¨ÊµÏÖÀà£¬×Ó½Ó¿ÚµÈ£©´«µİ¹ıÀ´£»
- * ´«Èë¸ĞĞËÈ¤µÄÀàĞÍ£»
- * Shared libraries£¨¹²Ïí¿â£© / runtimes pluggability£¨ÔËĞĞÊ±²å¼şÄÜÁ¦£©
- * 1¡¢ServletÈİÆ÷Æô¶¯»áÉ¨Ãè£¬µ±Ç°Ó¦ÓÃÀïÃæÃ¿Ò»¸öjar°üµÄ
- * 	        ServletContainerInitializerµÄÊµÏÖ
- * 2¡¢Ìá¹©ServletContainerInitializerµÄÊµÏÖÀà£»
- * 	       ±ØĞë°ó¶¨ÔÚ£¬META-INF/services/javax.servlet.ServletContainerInitializer
- *         ÎÄ¼şµÄÄÚÈİ¾ÍÊÇServletContainerInitializerÊµÏÖÀàµÄÈ«ÀàÃû£»
- * ×Ü½á£ºÈİÆ÷ÔÚÆô¶¯Ó¦ÓÃµÄÊ±ºò£¬»áÉ¨Ãèµ±Ç°Ó¦ÓÃÃ¿Ò»¸öjar°üÀïÃæ
+ * å®¹å™¨å¯åŠ¨çš„æ—¶å€™ä¼šå°†@HandlesTypesæŒ‡å®šçš„è¿™ä¸ªç±»å‹ä¸‹é¢çš„å­ç±»ï¼ˆå®ç°ç±»ï¼Œå­æ¥å£ç­‰ï¼‰ä¼ é€’è¿‡æ¥ï¼›
+ * ä¼ å…¥æ„Ÿå…´è¶£çš„ç±»å‹ï¼›
+ * Shared librariesï¼ˆå…±äº«åº“ï¼‰ / runtimes pluggabilityï¼ˆè¿è¡Œæ—¶æ’ä»¶èƒ½åŠ›ï¼‰
+ * 1ã€Servletå®¹å™¨å¯åŠ¨ä¼šæ‰«æï¼Œå½“å‰åº”ç”¨é‡Œé¢æ¯ä¸€ä¸ªjaråŒ…çš„
+ * 	        ServletContainerInitializerçš„å®ç°
+ * 2ã€æä¾›ServletContainerInitializerçš„å®ç°ç±»ï¼›
+ * 	       å¿…é¡»ç»‘å®šåœ¨ï¼ŒMETA-INF/services/javax.servlet.ServletContainerInitializer
+ *         æ–‡ä»¶çš„å†…å®¹å°±æ˜¯ServletContainerInitializerå®ç°ç±»çš„å…¨ç±»åï¼›
+ * æ€»ç»“ï¼šå®¹å™¨åœ¨å¯åŠ¨åº”ç”¨çš„æ—¶å€™ï¼Œä¼šæ‰«æå½“å‰åº”ç”¨æ¯ä¸€ä¸ªjaråŒ…é‡Œé¢
  *        META-INF/services/javax.servlet.ServletContainerInitializer
- *        Ö¸¶¨µÄÊµÏÖÀà£¬Æô¶¯²¢ÔËĞĞÕâ¸öÊµÏÖÀàµÄ·½·¨£»´«Èë¸ĞĞËÈ¤µÄÀàĞÍ£»
- *        ServletContainerInitializer£»
- *        @HandlesTypes£»
+ *        æŒ‡å®šçš„å®ç°ç±»ï¼Œå¯åŠ¨å¹¶è¿è¡Œè¿™ä¸ªå®ç°ç±»çš„æ–¹æ³•ï¼›ä¼ å…¥æ„Ÿå…´è¶£çš„ç±»å‹ï¼›
+ *        ServletContainerInitializerï¼›
+ *        @HandlesTypesï¼›
  * @create 2020-01-09 0:05
  * @last modify by [dell 2020-01-09 0:05]
  **/
@@ -31,22 +31,22 @@ import java.util.Set;
 public class MyServletContainerInitializer implements ServletContainerInitializer {
 
     /**
-     * @param c   ¸ĞĞËÈ¤µÄÀàĞÍµÄËùÓĞ×ÓÀàĞÍ£»
-     * @param ctx ´ú±íµ±Ç°WebÓ¦ÓÃµÄServletContext£»Ò»¸öWebÓ¦ÓÃÒ»¸öServletContext£»
+     * @param c   æ„Ÿå…´è¶£çš„ç±»å‹çš„æ‰€æœ‰å­ç±»å‹ï¼›
+     * @param ctx ä»£è¡¨å½“å‰Webåº”ç”¨çš„ServletContextï¼›ä¸€ä¸ªWebåº”ç”¨ä¸€ä¸ªServletContextï¼›
      * @return void
-     * @Description: Ó¦ÓÃÆô¶¯µÄÊ±ºò£¬»áÔËĞĞonStartup·½·¨£»
-     * 1£©¡¢Ê¹ÓÃServletContext×¢²áWeb×é¼ş£¨Servlet¡¢Filter¡¢Listener£©
-     * 2£©¡¢Ê¹ÓÃ±àÂëµÄ·½Ê½£¬ÔÚÏîÄ¿Æô¶¯µÄÊ±ºò¸øServletContextÀïÃæÌí¼Ó×é¼ş£»
-     * ±ØĞëÔÚÏîÄ¿Æô¶¯µÄÊ±ºòÀ´Ìí¼Ó£»
-     * 1£©¡¢ServletContainerInitializerµÃµ½µÄServletContext£»
-     * 2£©¡¢ServletContextListenerµÃµ½µÄServletContext£»
+     * @Description: åº”ç”¨å¯åŠ¨çš„æ—¶å€™ï¼Œä¼šè¿è¡ŒonStartupæ–¹æ³•ï¼›
+     * 1ï¼‰ã€ä½¿ç”¨ServletContextæ³¨å†ŒWebç»„ä»¶ï¼ˆServletã€Filterã€Listenerï¼‰
+     * 2ï¼‰ã€ä½¿ç”¨ç¼–ç çš„æ–¹å¼ï¼Œåœ¨é¡¹ç›®å¯åŠ¨çš„æ—¶å€™ç»™ServletContexté‡Œé¢æ·»åŠ ç»„ä»¶ï¼›
+     * å¿…é¡»åœ¨é¡¹ç›®å¯åŠ¨çš„æ—¶å€™æ¥æ·»åŠ ï¼›
+     * 1ï¼‰ã€ServletContainerInitializerå¾—åˆ°çš„ServletContextï¼›
+     * 2ï¼‰ã€ServletContextListenerå¾—åˆ°çš„ServletContextï¼›
      * @author luoyong
      * @create 0:08 2020/1/9
      * @last modify by [LuoYong 0:08 2020/1/9 ]
      */
     @Override
     public void onStartup(Set<Class<?>> c, ServletContext ctx) throws ServletException {
-        System.out.println("¸ĞĞËÈ¤µÄÀàĞÍÈçÏÂ:");
+        System.out.println("æ„Ÿå…´è¶£çš„ç±»å‹å¦‚ä¸‹:");
         c.stream().forEach(System.out::println);
     }
 }
