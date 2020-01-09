@@ -2,10 +2,9 @@ package com.ly.servlet;
 
 import com.ly.service.HelloService;
 
-import javax.servlet.ServletContainerInitializer;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
+import javax.servlet.*;
 import javax.servlet.annotation.HandlesTypes;
+import java.util.EnumSet;
 import java.util.Set;
 
 /**
@@ -15,15 +14,15 @@ import java.util.Set;
  * 传入感兴趣的类型；
  * Shared libraries（共享库） / runtimes pluggability（运行时插件能力）
  * 1、Servlet容器启动会扫描，当前应用里面每一个jar包的
- * 	        ServletContainerInitializer的实现
+ * ServletContainerInitializer的实现
  * 2、提供ServletContainerInitializer的实现类；
- * 	       必须绑定在，META-INF/services/javax.servlet.ServletContainerInitializer
- *         文件的内容就是ServletContainerInitializer实现类的全类名；
+ * 必须绑定在，META-INF/services/javax.servlet.ServletContainerInitializer
+ * 文件的内容就是ServletContainerInitializer实现类的全类名；
  * 总结：容器在启动应用的时候，会扫描当前应用每一个jar包里面
- *        META-INF/services/javax.servlet.ServletContainerInitializer
- *        指定的实现类，启动并运行这个实现类的方法；传入感兴趣的类型；
- *        ServletContainerInitializer；
- *        @HandlesTypes；
+ * META-INF/services/javax.servlet.ServletContainerInitializer
+ * 指定的实现类，启动并运行这个实现类的方法；传入感兴趣的类型；
+ * ServletContainerInitializer；
+ * @HandlesTypes；
  * @create 2020-01-09 0:05
  * @last modify by [dell 2020-01-09 0:05]
  **/
@@ -48,5 +47,20 @@ public class MyServletContainerInitializer implements ServletContainerInitialize
     public void onStartup(Set<Class<?>> c, ServletContext ctx) throws ServletException {
         System.out.println("感兴趣的类型如下:");
         c.stream().forEach(System.out::println);
+
+
+        //注册组件
+        ServletRegistration.Dynamic userServlet = ctx.addServlet("userServlet", UserServlet.class);
+        //配置映射信息
+        userServlet.addMapping("/user");
+
+        //注册Listener
+        ctx.addListener(UserListener.class);
+
+        //注册Filter
+        FilterRegistration.Dynamic userFilter = ctx.addFilter("userFilter", UserFilter.class);
+        //配置Filter的映射信息
+        userFilter.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST), true, "/*");
+
     }
 }
