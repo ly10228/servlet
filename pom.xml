@@ -15,6 +15,13 @@
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
+        <!--引入SpringMvc-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>4.3.11.RELEASE</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
